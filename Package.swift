@@ -9,9 +9,9 @@ let package = Package(
     .iOS(.v8)
   ],
   products: [
-    .library(name: "FlexLayout", targets: ["FlexLayout"]),
-    .library(name: "FlexLayoutYoga", targets: ["FlexLayoutYoga"]),
-    .library(name: "FlexLayoutYogaKit", targets: ["FlexLayoutYogaKit"])
+    .library(name: "FlexLayout", type: .dynamic, targets: ["FlexLayout"]),
+    .library(name: "FlexLayoutYoga", type: .dynamic, targets: ["FlexLayoutYoga"]),
+    .library(name: "FlexLayoutYogaKit", type: .dynamic, targets: ["FlexLayoutYogaKit"])
   ],
   dependencies: [
   ],
@@ -56,6 +56,11 @@ let package = Package(
         .define("FLEXLAYOUT_SWIFT_PACKAGE"),
         .headerSearchPath("include/YogaKit/"),
         .headerSearchPath("./")
+      ],
+      linkerSettings: [
+        .linkedFramework("Foundation"),
+        .linkedFramework("UIKit"),
+        .linkedFramework("CoreGraphics")
       ]
     )
   ],
